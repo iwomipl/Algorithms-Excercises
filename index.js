@@ -153,10 +153,25 @@ const pathToValueFinder = (arr, obj)=>{
 // example input { a: 'c', c: 'a' }, { c: 'd', a: 'b', q: 's' }  /// output false
 
 const objectComparer = (obj1, obj2)=>{
+    const insideObjOne = Object.keys(obj1);
+    const insideObjTwo = Object.keys(obj2);
+    let returner;
+    (insideObjOne.length !== insideObjTwo.length) ? returner = false : returner = true;
+    insideObjOne.forEach((element)=>{
+        if (obj1[element] !== obj2[element]) {
+            returner = false;
+            return;
+        };
+    })
 
-
+    console.log(returner)
+    return returner;
 };
-console.log(objectComparer({ a: 'b', c: 'd' }, { c: 'd', a: 'b' }));
+// you can call it:
+// console.log(objectComparer({ a: 'b', c: 'd' }, { c: 'd', a: 'b' }));
+//and see the result on console or use it, function returns it
+//--------------------------------------------END---------------------------------------------------//
+
 // 9. Please write a function which takes a list of keys and an object, then returns this object, just without keys from the list
 // example input ['color', 'size'], { color: 'Blue', id: '22', size: 'xl' }
 // example output { id: '22' }
