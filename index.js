@@ -155,20 +155,19 @@ const pathToValueFinder = (arr, obj)=>{
 const objectComparer = (obj1, obj2)=>{
     const insideObjOne = Object.keys(obj1);
     const insideObjTwo = Object.keys(obj2);
-    let returner;
-    (insideObjOne.length !== insideObjTwo.length) ? returner = false : returner = true;
+    let trueOrFalseReturner = (insideObjOne.length !== insideObjTwo.length) ? false : true;
     insideObjOne.forEach((element)=>{
         if (obj1[element] !== obj2[element]) {
-            returner = false;
+            trueOrFalseReturner = false;
             return;
         };
     })
 
-    console.log(returner)
-    return returner;
+    console.log(trueOrFalseReturner)
+    return trueOrFalseReturner;
 };
 // you can call it:
-// console.log(objectComparer({ a: 'b', c: 'd' }, { c: 'd', a: 'b' }));
+// objectComparer({ a: 'b', c: 'd' }, { c: 'd', a: 'b' });
 //and see the result on console or use it, function returns it
 //--------------------------------------------END---------------------------------------------------//
 
@@ -176,3 +175,14 @@ const objectComparer = (obj1, obj2)=>{
 // example input ['color', 'size'], { color: 'Blue', id: '22', size: 'xl' }
 // example output { id: '22' }
 
+const myPartsOfObjectRemover = (keysObj, fullObj)=>{
+    const entriesFromFullObj = Object.entries(fullObj).filter(([key])=> !keysObj.includes(key));
+    const objFromFilteredEntries = Object.fromEntries(entriesFromFullObj);
+    console.log(objFromFilteredEntries)
+
+    return objFromFilteredEntries;
+}
+// you can call it:
+// myPartsOfObjectRemover(['color', 'size'], { color: 'Blue', id: '22', size: 'xl' });
+//and see the result on console or use it, function returns it
+//--------------------------------------------END---------------------------------------------------//
